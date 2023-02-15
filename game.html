@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="PL">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+    <script src="game.js"></script>
+    <title>Black Jack</title>
+</head>
+<body>
+    <div id="rules_field">
+        <h2>Rules</h2>
+        <p>Zadaniem gracza jest uzyskać jak najbliżej (ale nie więcej niż) 21 punktów. </p>
+        <p>Punktacja kart:</p>
+        <ul>
+            <li>2...10 - 2...10pkt</li>
+            <li>J, Q, K - 10pkt</li>
+            <li>A - 11pkt</li>
+        </ul>
+        <p>
+            Gracz i krupier dostają po dwie karty. Gracz teraz może
+            podjąć decyzje o swoim następnym ruchu. Gracz ma następujące możliwości:
+        </p>
+        <ul>
+            <li>Dobrać kartę</li>
+            <li>Zrezygnować z doboru</li>
+        </ul>
+        <input type="button" value="close" onclick="closeRules()" id="close"></input>
+    </div>
+    <div id="playground">
+
+        <div class="field" id="croupier_field">
+        </div>
+
+        <div class="field" id="cards_field">
+            <img id="stash_img" src="cards/blue_back.png">
+        </div>
+
+        <div class="field" id="user_field">
+        </div>
+
+        <div id="buttons_field">    
+            <input type="button" value="HIT" onclick="playRound()" id="dobierz"></input>
+            <input type="button" value="PASS" onclick="pass()" id="pass"></input>
+            <input type="button" value="RESET" onclick="start()" id="reset"></input>
+            <input type="button" value="RULES" onclick="rules()" id="rules"></input>
+        </div>
+    </div>
+</body>
+</html>

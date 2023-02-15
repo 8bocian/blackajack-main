@@ -1,0 +1,63 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+    background-color: rgb(30, 192, 9);
+}
+
+#content_main{
+    height: 300px;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+}
+
+input{
+    margin: 10px;
+    padding: 5px;
+}
+
+#title{
+    text-align: center;
+    background-color: aquamarine;
+    padding: 20px;
+}
+
+.field{
+    height: 200px;
+    margin: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+}
+
+#stash_img{
+    transform: rotate(90deg);
+    width: 10rem;
+}
+
+#card_left{
+    transform: rotate(30deg);
+}
+
+#card_right{
+    transform: rotate(-30deg);
+}
+
+#buttons_field{
+    height: 200px;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+}
+
+#rules_field{
+    display: none;
+    position: fixed;
+    top: 15%;
+    left: 15%;
+    width: 50%;
+    z-index: 100;
+    text-align: center;
+    background: rgb(218, 58, 58);
+    padding: 10%;
+}
