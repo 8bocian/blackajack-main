@@ -60,4 +60,18 @@ input{
     text-align: center;
     background: rgb(218, 58, 58);
     padding: 10%;
+    border-radius: 20px;
+}
+
+#result_field{
+    display: none;
+    position: fixed;
+    top: 15%;
+    left: 15%;
+    width: 50%;
+    z-index: 100;
+    text-align: center;
+    background: rgb(218, 58, 58);
+    padding: 10%;
+    border-radius: 20px;
 }

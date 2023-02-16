@@ -4,7 +4,7 @@ var userPass = false, croupierPass = false;
 var finished = false;
 
 var fullDeck = ["2C","2D","2H","2S","3C","3D","3H","3S","4C","4D","4H","4S","5C","5D","5H","5S","6C","6D","6H","6S","7C","7D","7H","7S","8C","8D","8H","8S","9C","9D","9H","9S","10C","10D","10H","10S","JC","JD","JH","JS","QC","QD","QH","QS","KC","KD","KH","KS","AC","AD","AH","AS"];
-var playDeck = fullDeck;
+var playDeck = fullDeck.slice();
 var croupierCards = [];
 
 const values = {"J": 10, "Q": 10, "K": 10, "A": 11};
@@ -44,7 +44,7 @@ function playRound(){
     }
 
     if(croupier > 15){
-        if(Math.random() < croupier/21){
+        if(Math.random() < croupier/20){
             croupierPass = true;
         }
     }
@@ -52,12 +52,13 @@ function playRound(){
     console.log(`user ${user}, ${userPass}`, `croupier ${croupier}, ${croupierPass}`);
 
     if(croupierPass && userPass){
-        if (croupier == 21 && user == 21){
-            endGame(remis);
+        if (croupier == user){
+            var winner = "tie";
+        } else {
+            var winner = croupier-21 > user-21 ? "croupier" : "user";
+            console.log(winner);
+            console.log(croupier-21, user-21);
         }
-        var winner = croupier-21 > user-21 ? "croupier" : "user";
-        console.log(winner);
-        console.log(croupier-21, user-21);
         endGame(winner);
         return
     }
@@ -78,8 +79,14 @@ function endGame(winner){
         croupierField.appendChild(img);
     });
     
-
-    alert(`Wygrał ${winner} croupier ${croupier}, user ${user}`);
+    if(winner == "tie"){
+        // alert(`Remis croupier ${croupier}, user ${user}`);
+        result(`Remis croupier ${croupier}, user ${user}`);
+    } else {
+        // alert(`Wygrał ${winner} croupier ${croupier}, user ${user}`);
+        result(`Wygrał ${winner} croupier ${croupier}, user ${user}`);
+    }
+    return
 }
 
 function pass(){
@@ -100,7 +107,7 @@ function getCard(name){
     }
     playDeck.pop(number);
     var imageName = card + ".png";
-    console.log(value);
+    console.log(playDeck, card);
 
     if(name=="croupier"){
         croupier += value;
@@ -117,13 +124,13 @@ function start(){
     croupierField.innerHTML = "";
     userField.innerHTML = "";
     croupierCards = [];
+    playDeck = fullDeck.slice();
     document.getElementById("dobierz").disabled = false;
     document.getElementById("pass").disabled = false;
     croupier = 0;
     user = 0;
     userPass = false, croupierPass = false;
     finished = false;
-    playDeck = fullDeck;
     playRound();
     playRound();
 }
@@ -135,7 +142,18 @@ function rules(){
 function closeRules(){
     document.getElementById("rules_field").style.display = "none";
 }
+
+function result(msg){
+    document.getElementById("result_field").style.display = "block";
+    var resultText = document.createElement("h2");
+    resultText.innerHTML = msg;
+    document.getElementById("result_field").appendChild(resultText);
+}
+
+function closeResult(){
+    document.getElementById("result_field").style.display = "none";
+}
+
 window.onload = function(){
     start();
 }
-// document.addEventListener("DOMContentLoaded", )
