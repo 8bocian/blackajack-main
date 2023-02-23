@@ -31,7 +31,7 @@ function playRound(){
     if(!croupierPass){
         var cardName = getCard("croupier");
         var img = document.createElement("img");
-        img.src = `cards/blue_back.png`;
+        img.src = `cards/bg/blue_back.png`;
         img.width = 100;
         croupierField.appendChild(img);
         croupierCards.push(cardName);
@@ -68,7 +68,7 @@ function endGame(winner){
     userPass = false;
     croupierPass = false;
     finished = true;
-    document.getElementById("dobierz").disabled = true;
+    document.getElementById("hit").disabled = true;
     document.getElementById("pass").disabled = true;
     const croupierField = document.getElementById("croupier_field");
     croupierField.innerHTML = "";
@@ -125,7 +125,7 @@ function start(){
     userField.innerHTML = "";
     croupierCards = [];
     playDeck = fullDeck.slice();
-    document.getElementById("dobierz").disabled = false;
+    document.getElementById("hit").disabled = false;
     document.getElementById("pass").disabled = false;
     croupier = 0;
     user = 0;
@@ -145,14 +145,23 @@ function closeRules(){
 
 function result(msg){
     document.getElementById("result_field").style.display = "block";
-    var resultText = document.createElement("h2");
+    var resultText = document.getElementById("result");
     resultText.innerHTML = msg;
-    document.getElementById("result_field").appendChild(resultText);
+    // document.getElementById("result_field").appendChild(resultText);
 }
 
 function closeResult(){
     document.getElementById("result_field").style.display = "none";
 }
+
+window.addEventListener("DOMContentLoaded", function(){
+    document.getElementById("hit").addEventListener("click", playRound);
+    document.getElementById("pass").addEventListener("click", pass);
+    document.getElementById("reset").addEventListener("click", start);
+    document.getElementById("rules").addEventListener("click", rules);
+    document.getElementById("close_rsesult").addEventListener("click", closeResult);
+    document.getElementById("close_rules").addEventListener("click", closeRules);
+});
 
 window.onload = function(){
     start();

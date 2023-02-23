@@ -10,26 +10,32 @@
 </head>
 <body>
     <div id="result_field">
-        <input type="button" id="result_clear" value="close" onclick="closeResult()" id="close"></input>
+        <h2 id="result"></h2>
+        <input type="button" id="result_clear" value="close" id="close_result"></input>
     </div>
     <div id="rules_field">
-        <h2>Rules</h2>
-        <p>Zadaniem gracza jest uzyskać jak najbliżej (ale nie więcej niż) 21 punktów. </p>
-        <p>Punktacja kart:</p>
-        <ul>
-            <li>2...10 - 2...10pkt</li>
-            <li>J, Q, K - 10pkt</li>
-            <li>A - 11pkt</li>
-        </ul>
-        <p>
-            Gracz i krupier dostają po dwie karty. Gracz teraz może
-            podjąć decyzje o swoim następnym ruchu. Gracz ma następujące możliwości:
-        </p>
-        <ul>
-            <li>Dobrać kartę</li>
-            <li>Zrezygnować z doboru</li>
-        </ul>
-        <input type="button" value="close" onclick="closeRules()" id="close"></input>
+        <h1>Rules</h1>
+        <div id="rules_text">
+            <p>Zadaniem gracza jest uzyskać jak najbliżej (ale nie więcej niż) 21 punktów. </p>
+            <p>Punktacja kart:</p>
+            <ul>
+                <li>2...10 - 2...10pkt</li>
+                <li>J, Q, K - 10pkt</li>
+                <li>A - 11pkt</li>
+            </ul>
+            <p>
+                Gracz i krupier dostają po dwie karty. Gracz teraz może
+                podjąć decyzje o swoim następnym ruchu. Gracz ma następujące możliwości:
+            </p>
+            <ul>
+                <li>Dobrać kartę</li>
+                <li>Zrezygnować z doboru</li>
+            </ul>
+            <p>
+                Gra kończy się gdy jeden z graczy przekroczy limit 21 punktów albo obaj gracze zrezygnują z dobierania kart
+            </p>
+        </div>
+        <input type="button" value="close" id="close_rules"></input>
     </div>
     <div id="playground">
 
@@ -37,17 +43,17 @@
         </div>
 
         <div class="field" id="cards_field">
-            <img id="stash_img" src="cards/blue_back.png">
+            <img id="stash_img" src="cards/bg/blue_back.png">
         </div>
 
         <div class="field" id="user_field">
         </div>
 
         <div id="buttons_field">    
-            <input type="button" value="HIT" onclick="playRound()" id="dobierz"></input>
-            <input type="button" value="PASS" onclick="pass()" id="pass"></input>
-            <input type="button" value="RESET" onclick="start()" id="reset"></input>
-            <input type="button" value="RULES" onclick="rules()" id="rules"></input>
+            <input type="button" value="HIT" id="hit" class="main_inp"></input>
+            <input type="button" value="PASS" id="pass" class="main_inp"></input>
+            <input type="button" value="RESET" id="reset" class="main_inp"></input>
+            <input type="button" value="RULES" id="rules" class="main_inp"></input>
         </div>
     </div>
 </body>
